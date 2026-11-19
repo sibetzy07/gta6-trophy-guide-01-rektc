@@ -3,23 +3,72 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>GTA VI Trophy Guide &amp; Tracker — all 55 PS5 trophies</title>
+<meta name="description" content="An offline guide and tracker for all 55 Grand Theft Auto VI trophies on PlayStation 5: official names, descriptions and grades, a guide with sources for each, a roadmap to the platinum, and a saved checklist.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="hero">
+  <div>
+    <h1>GTA VI Trophy Guide &amp; Tracker</h1>
+    <p class="sub">Every one of the 55 PlayStation&nbsp;5 trophies — official names, descriptions and grades — with a guide and its sources for each one, a roadmap to the platinum, and a checklist that remembers what you earned. Works offline, from its own files.</p>
+  </div>
+  <div class="progress" id="progress" aria-live="polite">
+    <div class="progress-top"><strong id="progress-count">0 / 55</strong><span id="progress-pct">0%</span></div>
+    <div class="bar"><div class="bar-fill" id="progress-fill" style="width:0%"></div></div>
+    <p class="grade-counts" id="grade-counts">Platinum 0/1 · Gold 0/2 · Silver 0/6 · Bronze 0/46</p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<nav class="tabs" aria-label="Views">
+  <button id="tab-checklist" type="button" class="tab active" aria-pressed="true">Checklist</button>
+  <button id="tab-roadmap" type="button" class="tab" aria-pressed="false">Roadmap to Platinum</button>
+</nav>
+
+<section class="controls" aria-label="Tracker controls">
+  <div class="kinds" id="kinds" role="group" aria-label="Filter by kind"></div>
+  <div class="controls-row">
+    <label class="ctl">Grade
+      <select id="grade">
+        <option value="all">All grades</option>
+        <option value="platinum">Platinum</option>
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+        <option value="bronze">Bronze</option>
+      </select>
+    </label>
+    <label class="ctl">Search
+      <input id="search" type="search" placeholder="Name or description…" autocomplete="off">
+    </label>
+    <label class="ctl check"><input id="hide-earned" type="checkbox"> Hide earned</label>
+    <label class="ctl check"><input id="spoilers" type="checkbox"> Hide story spoilers</label>
+    <button id="export" type="button">Export progress</button>
+    <label class="ctl import">Import progress <input id="import" type="file" accept="application/json"></label>
+  </div>
+  <p class="showing" id="showing">Showing 55 of 55 trophies</p>
+</section>
+
+<main>
+  <section id="checklist" aria-label="Trophy checklist">
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>No trophies match these filters. There are no online trophies at launch — all 55 unlock in single-player.</p>
+  </section>
+
+  <section id="roadmap" aria-label="Roadmap to the platinum" hidden>
+    <div class="warn">
+      <h2>Read this first — the one missable trophy</h2>
+      <p><strong>Positive Mental Attitude</strong> is the only trophy that can be missed: Lucia&rsquo;s balcony meditation in Chapter&nbsp;1 disappears once that chapter ends. Do it in Chapter&nbsp;1, and keep a manual save from the start of every chapter plus one untouched save from just before the final mission — there is no mission replay and no New Game Plus.</p>
+      <p>Never use cheats on your trophy save: they switch off trophies and saving. There are no online trophies, no difficulty trophies and no mission medals.</p>
+    </div>
+    <ol class="phases" id="phases"></ol>
+    <p class="roadmap-sources">Roadmap figures come from the same guides cited beside each trophy: <a href="https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap">Push Square — GTA 6 Trophy Guide &amp; Roadmap</a> and <a href="https://outputlag.com/guides/gta-6-trophy-list/">Output Lag — GTA 6 Trophy List</a>. Expect roughly 200 to 300 hours for the platinum.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Official trophy names, descriptions and grades as PlayStation publishes them. Each guide is written for this page and cites its source beside the trophy — follow the link to read more. The look is our own: no Rockstar logo, artwork, box art or game screenshots.</p>
+  <p>Guides cite <a href="https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap">Push Square</a>, <a href="https://outputlag.com/guides/gta-6-trophy-list/">Output Lag</a> and <a href="https://sixshore.com/gta-6/guides/trophies-and-achievements/">Sixshore</a>. Progress is stored only in your browser (localStorage) and in the file you export.</p>
+</footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
